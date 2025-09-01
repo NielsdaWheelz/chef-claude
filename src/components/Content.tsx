@@ -1,9 +1,9 @@
 export default function Content() {
     return (
-        <main className="main">
+        <main>
             <form className="add-ingredient-form">
                 <input type="text" placeholder="e.g. oregano" aria-label="Add ingredient" />
-                <button>Add ingredient</button>
+                <button type="submit">Add ingredient</button>
             </form>
         </main>
     )

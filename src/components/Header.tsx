@@ -2,9 +2,9 @@ import viteLogo from '/vite.svg'
 
 export default function Header() {
     return (
-        <header className="header">
+        <header>
             <img src={viteLogo} alt="logo" />
-            <h2>Chef Claude</h2>
+            <h1>Chef Claude</h1>
         </header>
     )
 }
