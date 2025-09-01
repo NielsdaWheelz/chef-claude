@@ -62,3 +62,7 @@ main {
   content: "+";
   margin-right: 5px;
 }
+
+.add-ingredient-form > button:hover {
+  background-color: #313130;
+}
