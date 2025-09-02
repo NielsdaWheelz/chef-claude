@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 export default function Content() {
 
     const ingredients = ["Chicken", "Beef", "Pork", "Fish", "Eggs", "Milk", "Cheese", "Butter", "Bread", "Rice", "Pasta", "Tomato", "Potato", "Carrot", "Onion", "Garlic", "Pepper", "Salt", "Pepper"];
@@ -15,6 +17,16 @@ export default function Content() {
         ingredients.push(newIngredient)
         console.log(ingredients)
     }
+    
+    const [state, setState] = useState("Awake.")
+
+    function handleStateClick() {
+        if (state === "Awake.") {
+            setState("Asleep.")
+        } else if (state === "Asleep.") {
+            setState("Awake.")
+        }
+    }
 
     return (
         <main>
@@ -25,6 +37,7 @@ export default function Content() {
             <ul>
                 {ingredientElements}
             </ul>
+            <button onClick = {() => handleStateClick()}>{ state }</button>
         </main>
     )
 }
