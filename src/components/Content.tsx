@@ -18,26 +18,27 @@ export default function Content() {
         ingredients.push(newIngredient)
         console.log(ingredients)
     }
-    
-    const [state, setState] = useState("Awake.")
 
-    function handleStateClick() {
-        if (state === "Awake.") {
-            setState("Asleep.")
-        } else if (state === "Asleep.") {
-            setState("Awake.")
+    const [status, setStatus] = useState("Asleep.")
+
+    function switchStatus() {
+        if (status === "Asleep.") {
+            setStatus("Awake.")
+        } else if (status === "Awake.") {
+            setStatus("Asleep.")
         }
     }
 
     const [count, setCount] = useState(0)
 
-    function subtract() {
-        setCount(prevCount => prevCount - 1)
-    }
-
-    function add() {
+    function addCount() {
         setCount(prevCount => prevCount + 1)
     }
+
+    function subtractCount() {
+        setCount(prevCount => prevCount - 1)
+    }
+    
 
     return (
         <main>
@@ -51,13 +52,13 @@ export default function Content() {
             </ul>
 
             <div className="state-switch">
-                <button onClick = {() => handleStateClick()}>{ state }</button>
+                <button onClick = { switchStatus }>{ status} </button>
             </div>
 
             <div className="counter">
-                <button className="minus" aria-label="Decrease count" onClick = { subtract }>–</button>
+                <button className="minus" aria-label="Decrease count" onClick = { subtractCount }>–</button>
                 <h2 className="count">{ count }</h2>
-                <button className="plus" aria-label="Increase count" onClick = { add }>+</button>
+                <button className="plus" aria-label="Increase count" onClick = { addCount }>+</button>
             </div>
 
         </main>
