@@ -1,4 +1,5 @@
 import { useState } from "react"
+import '../styling/state.css'
 
 export default function Content() {
 
@@ -28,16 +29,37 @@ export default function Content() {
         }
     }
 
+    const [count, setCount] = useState(0)
+
+    function subtract() {
+        setCount(count - 1)
+    }
+
+    function add() {
+        setCount(count + 1)
+    }
+
     return (
         <main>
             <form className="add-ingredient-form" onSubmit={handleSubmit}>
                 <input type="text" name="ingredient" placeholder="e.g. oregano" aria-label="Add ingredient" />
                 <button>Add ingredient</button>
             </form>
+
             <ul>
                 {ingredientElements}
             </ul>
-            <button onClick = {() => handleStateClick()}>{ state }</button>
+
+            <div className="state-switch">
+                <button onClick = {() => handleStateClick()}>{ state }</button>
+            </div>
+
+            <div className="counter">
+                <button className="minus" aria-label="Decrease count" onClick = { subtract }>–</button>
+                <h2 className="count">{ count }</h2>
+                <button className="plus" aria-label="Increase count" onClick = { add }>+</button>
+            </div>
+
         </main>
     )
 }
