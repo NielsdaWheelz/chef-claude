@@ -27,6 +27,7 @@ export default function Content() {
 
             {ingredients.length > 0 && <>
                 <Ingredients ingredients={ ingredients } />
+                
                 {ingredients.length > 3 && <div className="get-recipe-container">
                     <div>
                         <h3>Ready for a recipe?</h3>
