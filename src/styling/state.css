@@ -42,3 +42,23 @@
     margin-right: -20px;
     z-index: 1;
 }
+
+.error-message {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #fee;
+    border: 1px solid #fcc;
+    color: #c33;
+}
+
+.error-message h2 {
+    margin: 0 0 8px 0;
+    color: #c33;
+    font-size: 1.2rem;
+}
+
+.error-message p {
+    margin: 0;
+    font-size: 0.9rem;
+}

@@ -2,11 +2,12 @@ import { useState } from "react"
 import '../styling/state.css'
 import Ingredients from "./Ingredients"
 import Recipe from "./Recipe";
+import { getRecipeFromChefClaude } from "../ai.ts"
 
 export default function Content() {
 
     const [recipe, setRecipe] = useState('');
-
+    const [error, setError] = useState('');
     const [ingredients, setIngredients] = useState<string[]>([]);
 
     function addIngredient(formData: FormData) {
@@ -14,8 +15,15 @@ export default function Content() {
         setIngredients([...ingredients, newIngredient as string])
     }
 
-    function getRecipe() {
-        setRecipe('Recipe')
+    async function getRecipe() {
+        try {
+            setError('')
+            const recipe = await getRecipeFromChefClaude(ingredients)
+            setRecipe(recipe)
+        } catch (err: any) {
+            setError(err instanceof Error ? err.message : 'An unknown error occurred')
+            setRecipe('')
+        }
     }
     
     return (
@@ -36,8 +44,14 @@ export default function Content() {
                     <button onClick={ getRecipe }>Get a recipe</button>
                 </div>}
 
-                {recipe &&<div>
-                <Recipe recipe={ recipe } /></div>}
+                {recipe && <div>
+                    <Recipe recipe={ recipe } />
+                </div>}
+
+                {error && <div className="error-message">
+                    <h2>⚠️ Error</h2>
+                    <p>{ error }</p>
+                </div>}
             </>}
         </main>
     )
